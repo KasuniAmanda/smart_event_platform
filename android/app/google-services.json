@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "782750101423",
+    "project_id": "smart-event-platform-3dcc0",
+    "storage_bucket": "smart-event-platform-3dcc0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782750101423:android:f6d2ea5262df3d8343095a",
+        "android_client_info": {
+          "package_name": "com.example.smart_event_platform"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8gHpfxOym_wH99FQIQl9TRDGUBGY1RhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
