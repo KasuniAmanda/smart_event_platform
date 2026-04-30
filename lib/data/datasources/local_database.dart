@@ -84,4 +84,34 @@ class LocalDatabase {
       WHERE favorites.user_id = ?
     ''', [userId]);
   }
+
+  Future<bool> isFavorite(String eventId, String userId) async {
+    final db = await instance.database;
+    final res = await db.query('favorites', where: 'event_id = ? AND user_id = ?', whereArgs: [eventId, userId]);
+    return res.isNotEmpty;
+  }
+
+  Future<void> removeFromFavorites(String eventId, String userId) async {
+    final db = await instance.database;
+    await db.delete('favorites', where: 'event_id = ? AND user_id = ?', whereArgs: [eventId, userId]);
+  }
+
+  Future<List<Event>> getFavoriteEvents(String userId) async {
+    final res = await getFavorites(userId);
+    return res.map((e) => Event(
+      id: e['id'] as String,
+      title: e['title'] as String,
+      description: e['description'] as String,
+      date: DateTime.parse(e['date'] as String),
+      location: e['location'] as String,
+      totalSeats: 0,
+      availableSeats: 0,
+      organizerId: '',
+    )).toList();
+  }
+
+  Future<void> clearCacheForEvent(String eventId) async {
+    final db = await instance.database;
+    await db.delete('cached_events', where: 'id = ?', whereArgs: [eventId]);
+  }
 }

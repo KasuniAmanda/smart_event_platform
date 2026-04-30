@@ -105,7 +105,7 @@ class AttendeeFeed extends ConsumerWidget {
               );
             },
             loading: () => const LinearProgressIndicator(color: Colors.indigo),
-            error: (_, __) => const SizedBox.shrink(),
+            error: (context, error) => const SizedBox.shrink(),
           ),
 
           // 2. Search Bar

@@ -69,7 +69,7 @@ class ProfileScreen extends ConsumerWidget {
                     ),
                   ),
                   loading: () => const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2)),
-                  error: (_, __) => const SizedBox(),
+                  error: (context, error) => const SizedBox(),
                 ),
               ],
             ),
@@ -156,7 +156,7 @@ class ProfileScreen extends ConsumerWidget {
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.indigo.withOpacity(0.1),
+          color: Colors.indigo.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Icon(icon, color: Colors.indigo),

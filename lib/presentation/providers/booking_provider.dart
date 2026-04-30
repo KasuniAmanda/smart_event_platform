@@ -8,7 +8,7 @@ class BookingNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final LocalDatabase _localDb = LocalDatabase.instance;
 
-  Future<void> bookTicket(String eventId, String userId, String eventTitle) async {
+  Future<void> bookTicket(String eventId, String userId, String eventTitle, {String userEmail = 'unknown@user.com'}) async {
     final ticketRef = _firestore.collection('tickets').doc();
     
     // 1. Remote Save (Firebase)
@@ -16,7 +16,9 @@ class BookingNotifier {
       'ticketId': ticketRef.id,
       'eventId': eventId,
       'userId': userId,
+      'userEmail': userEmail,
       'status': 'booked',
+      'bookedAt': Timestamp.now(),
     });
 
     // 2. Local Save (Member 3: SQLite Relational Logic)

@@ -25,4 +25,8 @@ class EventService {
   }
 
   Future<void> createEvent(Event event) async {}
+
+  Future<void> deleteEvent(String id) async {
+    await _db.collection('events').doc(id).delete();
+  }
 }

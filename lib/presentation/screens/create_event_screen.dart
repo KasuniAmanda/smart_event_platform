@@ -223,7 +223,7 @@ class _CreateEventScreenState extends ConsumerState<CreateEventScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                       elevation: 4,
-                      shadowColor: Colors.indigo.withOpacity(0.4),
+                      shadowColor: Colors.indigo.withValues(alpha: 0.4),
                     ),
                     onPressed: _saveEvent, 
                     child: const Text(

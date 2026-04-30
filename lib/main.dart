@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart'; // ✅ Required for kIsWeb
-import 'package:sqflite/sqflite.dart'; // ✅ Required for databaseFactory
+// ✅ Required for databaseFactory
 import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // ✅ Required for FFI
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart'; // ✅ Required for Web support
 

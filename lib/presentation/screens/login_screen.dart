@@ -119,7 +119,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   if (!_isLogin) ...[
                     const SizedBox(height: 20),
                     DropdownButtonFormField<String>(
-                      value: _selectedRole,
+                      initialValue: _selectedRole,
                       decoration: InputDecoration(
                         labelText: "I want to...",
                         prefixIcon: const Icon(Icons.person_search_outlined),

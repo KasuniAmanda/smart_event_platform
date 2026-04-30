@@ -33,9 +33,13 @@ class _EventAttendeesScreenState extends State<EventAttendeesScreen> {
         stream: FirebaseFirestore.instance
             .collection('tickets')
             .where('eventId', isEqualTo: widget.eventId)
-            .orderBy('bookedAt', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            debugPrint('Error loading attendees: ${snapshot.error}');
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator(color: Colors.indigo));
           }
@@ -48,14 +52,31 @@ class _EventAttendeesScreenState extends State<EventAttendeesScreen> {
           
           // 📊 Calculation for Progress Header
           final total = allTickets.length;
-          final checkedIn = allTickets.where((doc) => doc['status'] == 'scanned').length;
+          final checkedIn = allTickets.where((doc) {
+            final data = doc.data() as Map<String, dynamic>?;
+            return data?['status'] == 'scanned';
+          }).length;
           final progress = total > 0 ? checkedIn / total : 0.0;
 
           // 🔍 Filtering logic for local search
           final displayedTickets = allTickets.where((doc) {
-            final email = (doc['userEmail'] as String).toLowerCase();
+            final data = doc.data() as Map<String, dynamic>?;
+            final email = (data?['userEmail'] as String?)?.toLowerCase() ?? '';
             return email.contains(_searchQuery.toLowerCase());
           }).toList();
+
+          
+          // Sort by bookedAt locally because compound index in Firestore requires manual creation
+          displayedTickets.sort((a, b) {
+            final dataA = a.data() as Map<String, dynamic>?;
+            final dataB = b.data() as Map<String, dynamic>?;
+            final aTime = dataA?['bookedAt'] as Timestamp?;
+            final bTime = dataB?['bookedAt'] as Timestamp?;
+            if (aTime == null && bTime == null) return 0;
+            if (aTime == null) return 1;
+            if (bTime == null) return -1;
+            return bTime.compareTo(aTime);
+          });
 
           return Column(
             children: [
@@ -153,7 +174,10 @@ class _EventAttendeesScreenState extends State<EventAttendeesScreen> {
   // ✅ Modern Attendee List Card
   Widget _buildAttendeeCard(Map<String, dynamic> ticket) {
     final bool isScanned = ticket['status'] == 'scanned';
-    final DateTime bookedDate = (ticket['bookedAt'] as Timestamp).toDate();
+    
+    // Safety check for older records missing bookedAt
+    final Timestamp? timestamp = ticket['bookedAt'] as Timestamp?;
+    final DateTime bookedDate = timestamp?.toDate() ?? DateTime.now();
     final String formattedDate = DateFormat('MMM dd, hh:mm a').format(bookedDate);
 
     return Container(
@@ -162,7 +186,7 @@ class _EventAttendeesScreenState extends State<EventAttendeesScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 10, offset: const Offset(0, 4)),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.03), blurRadius: 10, offset: const Offset(0, 4)),
         ],
       ),
       child: ListTile(
