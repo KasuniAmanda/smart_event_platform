@@ -8,5 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../data/datasources/auth_service.dart';
 
-
+// AUTH SERVICE
+final authServiceProvider = Provider<AuthService>((ref) {
+  return AuthService();
+});
 
