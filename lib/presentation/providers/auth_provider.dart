@@ -4,5 +4,9 @@
 // ============================================================
 
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../data/datasources/auth_service.dart';
 
-// TODO: Member 2 (State Management & Business Logic) - implement this file
+
+
