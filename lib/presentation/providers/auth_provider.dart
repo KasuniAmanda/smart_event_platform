@@ -13,3 +13,7 @@ final authServiceProvider = Provider<AuthService>((ref) {
   return AuthService();
 });
 
+// AUTH STATE (STABLE STREAM)
+final authStateProvider = StreamProvider<User?>((ref) {
+  return FirebaseAuth.instance.authStateChanges();
+});
