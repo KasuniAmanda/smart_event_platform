@@ -1,17 +1,8 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import '../../data/datasources/auth_service.dart';
+// ============================================================
+// File: auth_provider.dart
+// Assigned to: Member 2 (State Management & Business Logic)
+// ============================================================
 
-final authServiceProvider = Provider((ref) => AuthService());
 
-// Member 2: Listen to Auth Changes
-final authStateProvider = StreamProvider<User?>((ref) {
-  return FirebaseAuth.instance.authStateChanges();
-});
 
-// Member 2: Role Provider
-final userRoleProvider = FutureProvider<String>((ref) async {
-  final user = ref.watch(authStateProvider).value;
-  if (user == null) return 'guest';
-  return await ref.read(authServiceProvider).getUserRole(user.uid);
-});
+// TODO: Member 2 (State Management & Business Logic) - implement this file
