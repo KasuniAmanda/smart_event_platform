@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart'; // ✅ Required for kIsWeb
-// ✅ Required for databaseFactory
-import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // ✅ Required for FFI
-import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart'; // ✅ Required for Web support
+import 'package:flutter/foundation.dart'; // Required for kIsWeb
+// Required for databaseFactory
+import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // Required for FFI
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart'; // Required for Web support
 
 import 'core/navigation/app_router.dart';
 import 'firebase_options.dart'; 
@@ -12,7 +12,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ✅ MEMBER 3: Initialize SQLite for Web (Chrome) support
+  // MEMBER 3: Initialize SQLite for Web (Chrome) support
   if (kIsWeb) {
     databaseFactory = databaseFactoryFfiWeb;
   } else if (defaultTargetPlatform == TargetPlatform.windows || 
@@ -27,7 +27,7 @@ void main() async {
   );
 
   // Verification log
-  debugPrint("🚀 FIREBASE IS CONNECTED!"); 
+  debugPrint(" FIREBASE IS CONNECTED!"); 
 
   runApp(
     const ProviderScope(
@@ -49,7 +49,7 @@ class MyApp extends ConsumerWidget {
       title: 'Smart Event Platform',
       debugShowCheckedModeBanner: false,
       
-      // 🎨 CENTRALIZED THEME ENGINE
+      // CENTRALIZED THEME ENGINE
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
