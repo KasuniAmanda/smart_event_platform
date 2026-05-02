@@ -68,7 +68,7 @@ class Event {
       'organizerId': organizerId,
       'isFeatured': isFeatured,
 
-      // 🔥 NEW
+      // NEW
       'ticketPrice': ticketPrice,
       'isPaidEvent': isPaidEvent,
       'currency': currency,
