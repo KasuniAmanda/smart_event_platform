@@ -47,7 +47,7 @@ class Event {
       organizerId: map['organizerId'] ?? '',
       isFeatured: map['isFeatured'] ?? false,
 
-      // 🔥 NEW
+      // NEW
       ticketPrice: (map['ticketPrice'] ?? 0).toDouble(),
       isPaidEvent: map['isPaidEvent'] ?? false,
       currency: map['currency'] ?? "LKR",
