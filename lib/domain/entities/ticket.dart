@@ -39,7 +39,7 @@ class Ticket {
           ? (map['bookedAt'] as Timestamp).toDate()
           : DateTime.now(),
 
-      // 💰 NEW fields
+      // NEW fields
       eventTitle: map['eventTitle'] ?? '',
       ticketPrice: (map['ticketPrice'] ?? 0).toDouble(),
       currency: map['currency'] ?? 'LKR',
