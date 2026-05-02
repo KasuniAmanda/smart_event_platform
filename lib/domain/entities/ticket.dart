@@ -47,7 +47,7 @@ class Ticket {
   }
 
   // -----------------------------
-  // Ticket → Firestore / SQLite
+  // Ticket → Firestore & SQLite
   // -----------------------------
   Map<String, dynamic> toMap() {
     return {
