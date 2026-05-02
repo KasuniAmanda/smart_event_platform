@@ -18,7 +18,7 @@ class Ticket {
     required this.seatNumber,
     required this.bookingDate,
 
-    // 💰NEW (safe defaults for old tickets)
+    // NEW (safe defaults for old tickets)
     this.eventTitle = '',
     this.ticketPrice = 0.0,
     this.currency = 'LKR',
