@@ -1,5 +1,4 @@
-// ============================================================
-// File: booking_provider.dart
-// Assigned to: Member 2 (State Management & Business Logic)
-// ============================================================
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../data/datasources/local_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
