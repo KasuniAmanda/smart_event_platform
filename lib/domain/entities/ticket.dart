@@ -57,7 +57,7 @@ class Ticket {
       'seatNumber': seatNumber,
       'bookedAt': bookingDate,
 
-      // 💰 NEW fields
+      //NEW fields
       'eventTitle': eventTitle,
       'ticketPrice': ticketPrice,
       'currency': currency,
