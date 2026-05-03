@@ -47,7 +47,7 @@ class EventRepositoryImpl implements EventRepository {
 
   @override
   Future<List<Event>> getBookmarkedEvents(String userId) async {
-    // Member 3 Viva Point: Proving relational JOIN queries in SQLite.
+    //Proving relational JOIN queries in SQLite.
     // The JOIN now also returns ticketPrice and currency for offline viewing.
     return await localDataSource.getFavoriteEvents(userId);
   }
