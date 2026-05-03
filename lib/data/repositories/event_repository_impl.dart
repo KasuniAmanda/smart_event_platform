@@ -18,7 +18,7 @@ class EventRepositoryImpl implements EventRepository {
 
   @override
   Stream<List<Event>> getAllEvents() {
-    // Member 3 Viva Point: This stream fetches real-time data from Firebase.
+    // This stream fetches real-time data from Firebase.
     return remoteDataSource.getEvents();
   }
 
