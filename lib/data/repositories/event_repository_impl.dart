@@ -36,7 +36,7 @@ class EventRepositoryImpl implements EventRepository {
     if (isFavorite) {
       await localDataSource.removeFromFavorites(event.id, userId);
     } else {
-      // Member 3 Viva Point: Caching includes new financial metadata (ticketPrice, currency).
+      // Caching includes new financial metadata (ticketPrice, currency).
       // This ensures the local 'cached_events' table stays synced with the new schema.
       await localDataSource.cacheEvent(event);
       
