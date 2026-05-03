@@ -24,7 +24,7 @@ class EventRepositoryImpl implements EventRepository {
 
   @override
   Future<void> saveEvent(Event event) async {
-    // Member 4 Viva Point: Ensuring the new ticketPrice and currency are sent to Firebase.
+    // Ensuring the new ticketPrice and currency are sent to Firebase.
     await remoteDataSource.createEvent(event);
   }
 
