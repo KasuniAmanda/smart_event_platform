@@ -30,3 +30,6 @@ class EventService {
     });
   }
 }
+
+// 2. STATE PROVIDERS
+final searchQueryProvider = StateProvider<String>((ref) => '');
