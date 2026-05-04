@@ -44,3 +44,13 @@ final featuredEventsProvider = StreamProvider<List<Event>>((ref) {
       .map((snapshot) =>
           snapshot.docs.map((doc) => _mapFirestoreToEvent(doc)).toList());
 });
+
+// All Events
+final eventsStreamProvider = StreamProvider<List<Event>>((ref) {
+  return _db
+      .collection('events')
+      .orderBy('date')
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => _mapFirestoreToEvent(doc)).toList());
+});
