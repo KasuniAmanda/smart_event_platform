@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class BookingService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  /// 🎫 Method to Book a Ticket
+  ///  Method to Book a Ticket
   Future<void> bookTicket({
     required String eventId,
     required String userId,
@@ -39,7 +39,7 @@ class BookingService {
     await batch.commit();
   }
 
-  /// 🚫 Method to Cancel a Booking
+  /// Method to Cancel a Booking
   Future<void> cancelBooking({
     required String ticketId,
     required String eventId,
