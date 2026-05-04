@@ -60,3 +60,5 @@ class OrganizerLogic {
     await _db.collection('events').doc(eventId).delete();
   }
 }
+
+//
