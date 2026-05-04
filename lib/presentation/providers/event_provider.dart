@@ -10,3 +10,23 @@ final FirebaseFirestore _db = FirebaseFirestore.instance;
 final eventServiceProvider = Provider<EventService>((ref) {
   return EventService();
 });
+
+class EventService {
+  Future<void> createEvent(Event event) async {
+    await _db.collection('events').add({
+      'title': event.title,
+      'description': event.description,
+      'date': Timestamp.fromDate(event.date),
+      'location': event.location,
+      'totalSeats': event.totalSeats,
+      'availableSeats': event.availableSeats,
+      'organizerId': event.organizerId,
+      'isFeatured': event.isFeatured,
+
+      // 💰 Ticket system (FULL SUPPORT)
+      'ticketPrice': event.ticketPrice,
+      'isPaidEvent': event.ticketPrice > 0,
+      'currency': event.currency,
+    });
+  }
+}
