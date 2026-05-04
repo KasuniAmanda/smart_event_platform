@@ -71,3 +71,27 @@ final filteredEventsProvider =
     }).toList();
   });
 });
+
+
+// 5. SAFE MAPPER
+Event _mapFirestoreToEvent(DocumentSnapshot doc) {
+  final data = doc.data() as Map<String, dynamic>;
+
+  return Event(
+    id: doc.id,
+    title: data['title'] ?? 'Untitled Event',
+    description: data['description'] ?? '',
+    date: (data['date'] is Timestamp)
+        ? (data['date'] as Timestamp).toDate()
+        : DateTime.now(),
+    location: data['location'] ?? 'TBD',
+    totalSeats: data['totalSeats'] ?? 0,
+    availableSeats: data['availableSeats'] ?? 0,
+    organizerId: data['organizerId'] ?? '',
+    isFeatured: data['isFeatured'] ?? false,
+
+    // 💰 Ticket price support
+    ticketPrice: (data['ticketPrice'] ?? 0).toDouble(),
+    isPaidEvent: data['isPaidEvent'] ?? false,
+    currency: data['currency'] ?? 'LKR',
+  );
