@@ -38,3 +38,4 @@ class EventService {
 }
 
 // Handles Firestore event data by streaming real-time updates, mapping documents to Event objects, and supporting event deletion.
+//
