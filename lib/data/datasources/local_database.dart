@@ -1,9 +1,3 @@
-// ============================================================
-// File: local_database.dart
-// Assigned to: Member 3 (Database & Data Layer)
-// ============================================================
-
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
