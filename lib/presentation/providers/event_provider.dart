@@ -6,3 +6,7 @@ import '../../domain/entities/event.dart';
 
 final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+// 1. SERVICE PROVIDER
+final eventServiceProvider = Provider<EventService>((ref) {
+  return EventService();
+});
