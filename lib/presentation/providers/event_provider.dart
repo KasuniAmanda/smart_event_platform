@@ -54,3 +54,20 @@ final eventsStreamProvider = StreamProvider<List<Event>>((ref) {
       .map((snapshot) =>
           snapshot.docs.map((doc) => _mapFirestoreToEvent(doc)).toList());
 });
+
+
+// 4. FILTERED PROVIDER
+final filteredEventsProvider =
+    Provider<AsyncValue<List<Event>>>((ref) {
+  final eventsAsync = ref.watch(eventsStreamProvider);
+  final query = ref.watch(searchQueryProvider).toLowerCase();
+
+  return eventsAsync.whenData((events) {
+    if (query.isEmpty) return events;
+
+    return events.where((event) {
+      return event.title.toLowerCase().contains(query) ||
+          event.location.toLowerCase().contains(query);
+    }).toList();
+  });
+});
