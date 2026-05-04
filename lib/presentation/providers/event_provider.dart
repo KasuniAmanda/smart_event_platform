@@ -33,3 +33,14 @@ class EventService {
 
 // 2. STATE PROVIDERS
 final searchQueryProvider = StateProvider<String>((ref) => '');
+
+// 3. STREAM PROVIDERS
+// Featured Events
+final featuredEventsProvider = StreamProvider<List<Event>>((ref) {
+  return _db
+      .collection('events')
+      .where('isFeatured', isEqualTo: true)
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => _mapFirestoreToEvent(doc)).toList());
+});
