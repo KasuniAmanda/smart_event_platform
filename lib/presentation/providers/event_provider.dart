@@ -1,5 +1,3 @@
-// ============================================================
-// File: event_provider.dart
-// Assigned to: Member 2 (State Management & Business Logic)
-// ============================================================
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../domain/entities/event.dart';
